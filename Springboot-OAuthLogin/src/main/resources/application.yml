@@ -1,0 +1,39 @@
+#Logging Settings
+logging:
+  level:
+    org:
+      hibernate: info
+
+#Server Port Settings
+server:
+  port: 8000
+
+
+#Spring Settings
+spring:
+  #DataSource Settings
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: '0310'
+    url: jdbc:oracle:thin:@127.0.0.1:1521:xe
+    username: IAN
+  #JPA Settings
+  jpa:
+    database: oracle
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  #Gmail Smtp Settings
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${mail.username}
+    password: ${mail.password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 5000
+          starttls:
+            enable: true
