@@ -46,8 +46,9 @@ public class Member {
         return new Member(null, userId, passwordEncoder.encode(pw), verifyCode, "USER", null);
     }
     
-    public static Member verifyUpdateUser(String userId, String veryifyCode) {
-    	return new Member(null, userId, null, veryifyCode, "USER", "Y");
+    public void verifyUpdateUser() {
+    	this.verifyCode = null;
+    	this.verifiedUser = "Y";
     }
 
     public Long getId() {
@@ -62,10 +63,6 @@ public class Member {
         return pw;
     }
     
-    public void setPw(String pw) {
-    	this.pw = pw;
-    }
-
     public String getRoles() {
         return roles;
     }

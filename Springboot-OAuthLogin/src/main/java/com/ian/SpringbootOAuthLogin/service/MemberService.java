@@ -17,17 +17,9 @@ public class MemberService {
 		this.repository = repository;
 	}
 	
-	public Optional<Member> findOne(String userId) {
-		return repository.findByUserId(userId);
+	public Optional<Member> isValidMember(String userId) {
+		return repository.findByUserIdAndVerifiedUser(userId, "Y");
 	}
 	
-	public boolean isValidMember(String userId, String pw) {
-		Optional<Member> member = findOne(userId);
-		
-        if (member.isPresent()) {
-            return member.get().getPw().equals(pw);
-        }
-        return false;
-	}
 	
 }
