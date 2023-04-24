@@ -114,6 +114,8 @@ function startAnimation() {
 }());
 
 const loginSection = document.querySelector(".login-section");
+const loginInputs = document.querySelectorAll(".login-input");
+
 const signupModal = document.querySelector(".signup-modal");
 const signupBtn = document.querySelector("#sign-up-btn");
 
@@ -123,6 +125,16 @@ const sendmailInputs = document.querySelectorAll(".sendmail-item");
 
 const authCheckForm = document.getElementById("auth-check-form");
 const signupInputs = document.querySelectorAll(".signup-item");
+
+if (err) {
+    console.log(msg);
+    loginInputs.forEach(input => {
+        input.classList.add("invalid")
+        setTimeout(() => {
+            input.classList.remove("invalid")
+        }, 500);
+    })
+}
 
 function toggleModal() {
     loginSection.classList.toggle("hidden");

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,10 @@
             </form>
         </div>
     </article>
-
+    <script th:inline="javascript">
+        let err = [[${error}]];
+        let msg = [[${exception}]];
+    </script>
     <script src="/js/login.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ import jakarta.servlet.DispatcherType;
 
 @Configuration
 public class SecurityConfig {
-	
+
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -23,7 +23,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(request ->
 						request
 							.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-							.requestMatchers("/join/**", "/send-mail/**", "/css/**", "/js/**", "/img/**").permitAll()
+							.requestMatchers("/auth/fail", "/join/**", "/send-mail/**", "/css/**", "/js/**", "/img/**").permitAll()
 							.anyRequest().authenticated()
 				)
 				.formLogin(login ->
@@ -33,6 +33,7 @@ public class SecurityConfig {
 							.usernameParameter("userId")
 							.passwordParameter("pw")
 							.defaultSuccessUrl("/greeting", true)
+							.failureHandler(new AuthFailureHandler())
 							.permitAll()
 				)
 				.logout();
