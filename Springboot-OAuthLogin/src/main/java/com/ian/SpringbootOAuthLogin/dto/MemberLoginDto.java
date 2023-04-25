@@ -1,0 +1,23 @@
+package com.ian.SpringbootOAuthLogin.dto;
+
+/**
+ * 회원 로그인을 위한 DTo
+ */
+public class MemberLoginDto {
+	
+	private String email;
+	private String pw;
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+}

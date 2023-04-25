@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <title>Login</title>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+    <section class="login-section">
+        <div class="login-box">
+            <img src="/img/hello.png" alt="#" class="hello-icon">
+            <form class="login-form" action="/login-process" method="post">
+                <input type="text" name="userId" id="email" class="email-input login-box-items login-input" placeholder="example@email.com">
+                <input type="password" name="pw" id="pw" class="pw-input login-box-items login-input" placeholder="password">
+                <button type="submit" id="login-btn" class="user-submit-btn login-box-items login-btn">Login</button>
+            </form>
+            <a href="#" class="find-pw">forgot password?</a>
+            <div class="instead-container">
+                <div class="or-line">OR</div>
+                <div class="sign-btn-box">
+                    <a href="#" id="oauth-google" class="sign-btn"></a>
+                    <a href="#" id="oauth-facebook" class="sign-btn"></a>
+                    <a href="#" id="oauth-naver" class="sign-btn"></a>
+                    <button type="button" id="sign-up-btn" class="sign-btn"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <article class="signup-modal hidden">
+        <button type="button" id="close-modal"></button>
+        <div class="login-box">
+            <span class="signup-logo">Signup</span>
+            <form id="signup-form">
+                <input type="text" name="email" id="signup-email" class="email-input login-box-items login-input sendmail-item" placeholder="example@email.com">
+                <input type="password" name="pw" id="signup-pw" class="pw-input login-box-items login-input sendmail-item" placeholder="password">
+                <button type="submit" class="user-submit-btn login-box-items login-btn sendmail-item">Send verification code</button>
+            </form>
+            <form id="auth-check-form">
+                <input type="text" name="auth" id="auth-input" class="auth-input login-box-items login-input signup-item hidden" placeholder="verification Code">
+                <button type="submit" class="user-submit-btn login-box-items login-btn signup-item hidden">Check Verification</button>
+            </form>
+        </div>
+    </article>
+    <script th:inline="javascript">
+        let err = [[${error}]];
+        let msg = [[${exception}]];
+    </script>
+    <script src="/js/login.js"></script>
+</body>
+</html>
