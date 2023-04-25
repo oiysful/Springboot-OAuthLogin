@@ -127,13 +127,13 @@ const authCheckForm = document.getElementById("auth-check-form");
 const signupInputs = document.querySelectorAll(".signup-item");
 
 if (err) {
-    console.log(msg);
-    loginInputs.forEach(input => {
-        input.classList.add("invalid")
-        setTimeout(() => {
-            input.classList.remove("invalid")
-        }, 500);
-    })
+    // loginInputs.forEach(input => {
+    //     input.classList.add("invalid")
+    //     setTimeout(() => {
+    //         input.classList.remove("invalid")
+    //     }, 500);
+    // });
+    alert(msg);
 }
 
 function toggleModal() {

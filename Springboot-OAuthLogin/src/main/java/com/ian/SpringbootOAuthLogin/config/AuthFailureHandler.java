@@ -25,12 +25,12 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
 		String errorMessage;
 		
-		if(exception instanceof BadCredentialsException) {
-			errorMessage = "로그인 정보 불일치";
-		} else if (exception instanceof InternalAuthenticationServiceException) {
+		if (exception instanceof InternalAuthenticationServiceException) {
 			errorMessage = "내부 시스템 오류";
 		} else if (exception instanceof UsernameNotFoundException) {
 			errorMessage = "등록되지 않은 회원";
+		} else if(exception instanceof BadCredentialsException) {
+			errorMessage = "로그인 정보를 확인하세요";
 		} else if (exception instanceof AuthenticationCredentialsNotFoundException) {
 			errorMessage = "인증 요청 거부";
 		} else {

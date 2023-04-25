@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +22,20 @@ public class AuthorizationController {
 	}
 	
 	@GetMapping("/auth/fail")
-//	public String loginFail(@RequestParam Map<String, Object> param, Model model) {
 	public String loginFail(@RequestParam Map<String, Object> param, RedirectAttributes redirect) {
 		
-		redirect.addAttribute("error", param.get("error"));
-		redirect.addAttribute("exception", param.get("exception"));
+		redirect.addFlashAttribute("error", param.get("error"));
+		redirect.addFlashAttribute("exception", param.get("exception"));
 		
 		return "redirect:/login";
 	}
+//	public String loginFail(@RequestParam Map<String, Object> param, Model model) {
+//		
+//		model.addAttribute("error", param.get("error"));
+//		model.addAttribute("exception", param.get("exception"));
+//		
+//		return "login";
+//	}
 	
 	@PostMapping("/join")
 	public ResponseEntity<String> join(@RequestBody MemberJoinDto dto) {
