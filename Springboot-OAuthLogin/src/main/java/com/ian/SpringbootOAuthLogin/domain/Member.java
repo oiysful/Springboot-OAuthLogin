@@ -11,6 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
+/**
+ * 회원 정보 Domain
+ */
 @Entity
 @DynamicInsert
 @DynamicUpdate

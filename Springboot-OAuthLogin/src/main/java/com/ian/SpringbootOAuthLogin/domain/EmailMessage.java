@@ -1,5 +1,8 @@
 package com.ian.SpringbootOAuthLogin.domain;
 
+/**
+ * 이메일 전송을 위한 Domain
+ */
 public class EmailMessage {
 	
 	private String to;

@@ -16,6 +16,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/**
+ * 로그인 실패 Handler
+ */
 @Component
 public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
@@ -25,6 +28,7 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
 		String errorMessage;
 		
+		// 각 Exception 별 메세지 지정
 		if (exception instanceof InternalAuthenticationServiceException) {
 			errorMessage = "내부 시스템 오류";
 		} else if (exception instanceof UsernameNotFoundException) {
@@ -37,8 +41,11 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 			errorMessage = "알 수 없는 오류";
 		}
 		
+		// URL parameter로 전달 중 한글 깨짐을 방지하기 위해 UTF-8로 urlEncode
 		errorMessage = URLEncoder.encode(errorMessage, StandardCharsets.UTF_8);
+		// 실패 처리 URL지정
 		setDefaultFailureUrl("/auth/fail?error=true&exception="+errorMessage);
+		// SimpleUrlAuthenticationFailureHandler의 onAuthenticationFailure 메소드 기능 사용
 		super.onAuthenticationFailure(request, response, exception);
 	}
 	

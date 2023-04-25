@@ -1,5 +1,8 @@
 package com.ian.SpringbootOAuthLogin.dto;
 
+/**
+ * 회원 로그인을 위한 DTo
+ */
 public class MemberLoginDto {
 	
 	private String email;
