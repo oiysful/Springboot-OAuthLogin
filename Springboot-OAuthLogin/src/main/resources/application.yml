@@ -14,9 +14,9 @@ spring:
   #DataSource Settings
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    password: '0310'
-    url: jdbc:oracle:thin:@127.0.0.1:1521:xe
-    username: IAN
+    url: ${oracle.url}
+    username: ${oracle.username}
+    password: ${oracle.password}
   #JPA Settings
   jpa:
     database: oracle
